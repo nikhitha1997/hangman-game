@@ -13,5 +13,6 @@ if all the chancess are over then you lost the game
 
 if you guess the correct word,then you won
 
-code is present in source folder
-run the main.py
+code is present in "source" folder
+run the 
+$main.py
