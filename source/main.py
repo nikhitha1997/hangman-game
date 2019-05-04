@@ -43,10 +43,10 @@ class Main(Frame):#main frame
 		add_word_btn = Button(self, text='Add New Word', command=lambda:controller.show_frame(AddWord))
 		quit_btn = Button(self, text='Quit', command=self.controller.quit)
 
-		heading_label.grid(row=2, column=5, padx=120,pady=30)
-		start_btn.grid(row=6, column=5, padx=120, pady=10)
-		add_word_btn.grid(row=7, column=5, padx=120, pady=10)
-		quit_btn.grid(row=10, column=5, padx=120, pady=10)
+		heading_label.grid(row=2, column=6, padx=120,pady=30)
+		start_btn.grid(row=6, column=6, padx=120, pady=10)
+		add_word_btn.grid(row=7, column=6, padx=120, pady=10)
+		quit_btn.grid(row=10, column=6, padx=120, pady=10)
 
 
 class Game(Frame):
@@ -161,7 +161,7 @@ class Game(Frame):
 		self.button_Y.grid(row=7,column=6,sticky='nsew',padx=5,pady=5)
 		self.button_Z.grid(row=7,column=7,sticky='nsew',padx=5,pady=5)
 		
-)
+
 		data_list = load_data()
 		self.word = "_ " * len(data_list[0][0])
 		hint = data_list[0][1]
@@ -175,10 +175,11 @@ class Game(Frame):
 		#inserting the canvas  to draw the hangman 
 		canvas_width = 500
 		canvas_height = 500
-		self.w = Canvas(self, bg="yellow",
+		self.w = Canvas(self, bg="white",
 		           width=canvas_width,
 		           height=canvas_height,)
 		self.w.grid(row=13,column=3,columnspan=7)
+		
 		
 		
 	def getText(self,val):#to get the text from the buttons
@@ -194,29 +195,33 @@ class Game(Frame):
 
 		if count == 0:
 			self.guess_remaining -= 1
-			self.message = messagebox.showwarning('warning','guess is wrong' )
-			print(self.guess_remaining)
-
-		if self.guess_remaining==6:
-			self.w.create_line(300, 50, 150, 50)        
-			self.w.create_line(300,50,300,350)
 			
+			if self.guess_remaining==6:
+				self.w.create_line(300, 50, 150, 50)        
+				self.w.create_line(300,50,300,350)
+				
 			
-		if self.guess_remaining==5:
-			self.w.create_oval(100,50,200,100)
-			 	         
-		if self.guess_remaining==4:
-			self.w.create_line(150, 100, 150, 300)
+			if self.guess_remaining==5:
+				self.w.create_oval(100,50,200,100)
+				 	         
+			if self.guess_remaining==4:
+				self.w.create_line(150, 100, 150, 300)
 
 
-		if self.guess_remaining==3:
-			self.w.create_line(150,150,75,200)
+			if self.guess_remaining==3:
+				self.w.create_line(150,150,75,200)
 
-		if self.guess_remaining==2:
-			self.w.create_line(150,270,75,350)		
+			if self.guess_remaining==2:
+				self.w.create_line(150,270,75,350)
 
+			if self.guess_remaining==1:
+				self.w.create_line(150,150, 250, 200)	
+		
+		
 		if self.guess_remaining == 0:
+			self.w.create_line(150,270,250,350)	
 			self.message = messagebox.showwarning('warning', 'You are out of guesses')#show the out of guessess
+		
 			self.controller.show_frame(Main)
 
 		for i in range(len(self.word2)):
