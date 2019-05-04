@@ -197,25 +197,30 @@ class Game(Frame):
 			self.message = messagebox.showwarning('warning','guess is wrong' )
 			print(self.guess_remaining)
 
-		if self.guess_remaining==6:
-			self.w.create_line(300, 50, 150, 50)        
-			self.w.create_line(300,50,300,350)
+			if self.guess_remaining==6:
+				self.w.create_line(300, 50, 150, 50)        
+				self.w.create_line(300,50,300,350)
+
 			
-			
-		if self.guess_remaining==5:
-			self.w.create_oval(100,50,200,100)
-			 	         
-		if self.guess_remaining==4:
-			self.w.create_line(150, 100, 150, 300)
+			if self.guess_remaining==5:
+				self.w.create_oval(100,50,200,100)
+
+			if self.guess_remaining==4:
+				self.w.create_line(150, 100, 150, 300)
 
 
-		if self.guess_remaining==3:
-			self.w.create_line(150,150,75,200)
+			if self.guess_remaining==3:
+				self.w.create_line(150,150,75,200)
 
-		if self.guess_remaining==2:
-			self.w.create_line(150,270,75,350)		
+			if self.guess_remaining==2:
+				self.w.create_line(150,270,75,350)
 
+			if self.guess_remaining==1:
+				self.w.create_line(150,150, 250, 200)	
+		
+		
 		if self.guess_remaining == 0:
+			self.w.create_line(150,270,250,350)	:
 			self.message = messagebox.showwarning('warning', 'You are out of guesses')#show the out of guessess
 			self.controller.show_frame(Main)
 
